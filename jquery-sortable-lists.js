@@ -15,6 +15,7 @@
     $.fn.sortableLists = function( options )
     {
         // Local variables. This scope is available for all the functions in this closure.
+        var container = this;
         var jQBody = $( 'body' ).css( 'position', 'relative' ),
 
             defaults = {
@@ -174,7 +175,7 @@
         }
 
         // Return this ensures chaining
-        return this.on( 'mousedown', function( e )
+        return this.on( 'mousedown', '.js-handle', function( e )
             {
                 var target = $( e.target );
 
@@ -185,7 +186,7 @@
 
                 // El must be li in jQuery object
                 var el = target.closest( 'li' ),
-                    rEl = $( this );
+                    rEl = $( container );
 
                 // Check if el is not empty
                 if ( el[ 0 ] )

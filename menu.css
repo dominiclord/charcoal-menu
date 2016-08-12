@@ -1,3 +1,25 @@
+
+/* Prevent the text contents of draggable elements from being selectable. */
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+.dragging {
+  opacity: 0.8;
+  color: #6894D1;
+}
+.drag-over {
+  /*text-decoration: underline;*/
+}
+.drag-enter {
+  /*color: #C93742;*/
+}
+
 .nest-container {
     list-style: none;
     margin: 0;
@@ -34,15 +56,26 @@
     background-color: #f7f7f9;
     border: 1px solid #e1e1e8;
     padding: 10px 20px;
+    position: relative;
 }
 .nest-fieldset-label {
-
+    padding-left: 60px;
 }
 .nest-toggle {
 
 }
 .nest-dropdown {
     display: none;
+}
+.nest-handle {
+    cursor: move;
+    background-color: grey;
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 28px;
+    width: 28px;
 }
 .nest-input {
 

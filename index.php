@@ -5,9 +5,10 @@
     </head>
     <body>
         <template id="child-template">
-            <li class="nest-item sortableListsOpen">
+            <li class="nest-item sortableListsOpen js-parent">
                 <div class="nest-fieldset">
                     <div class="nest-fieldset-wrap">
+                        <span class="nest-handle js-handle"></span>
                         <span class="nest-fieldset-label">{{item.label}}</span>
                         <button class="nest-toggle btn js-toggle clickable" type="button">
                             <span class="glyphicon glyphicon-triangle-bottom clickable"></span>
@@ -35,7 +36,9 @@
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+        <script src="vue.drag-and-drop.js"></script>
         <script src="jquery-sortable-lists.js"></script>
+        <script src="menuData.js"></script>
         <script src="menu.js"></script>
     </body>
 </html>
