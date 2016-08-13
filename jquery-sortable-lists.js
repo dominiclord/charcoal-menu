@@ -44,6 +44,7 @@
                 },
                 opener: {
                     active: false,
+                    as: 'class',
                     open: '',
                     close: '',
                     openerCss: {
@@ -481,7 +482,7 @@
         /////// End of Scroll handlers //////////////////////////////////////////////////////////////
 
         /**
-         * @desc Sets the position of dragged element
+         * Sets the position of dragged element
          * @param e event object
          * @param state state object
          * @return No value
@@ -498,7 +499,7 @@
         }
 
         /**
-         * @desc Return elementFromPoint() result as jQuery object
+         * Return elementFromPoint() result as jQuery object
          * @param x e.pageX
          * @param y e.pageY
          * @return null|jQuery object
@@ -971,20 +972,23 @@
 
     };
 
+    // Master positionning
+    var position = 0;
     /**
      * @desc jQuery plugin
      * @returns this to unsure chaining
      */
     $.fn.sortableListsToHierarchy = function()
     {
-        var arr = [],
-            order = 0;
+        var arr = [];
+            // position = 0;
 
         $( this ).children( 'li' ).each( function()
         {
             var li = $( this ),
                 listItem = {},
-                id = li.attr( 'id' );
+                id = li.attr( 'id' ),
+                label = li.find('.js-label').text();
 
             if ( ! id )
             {
@@ -993,10 +997,11 @@
             }
             listItem.id = id;
             listItem.value = li.data( 'value' );
-            listItem.order = order;
+            listItem.position = position;
+            listItem.label = label;
             arr.push( listItem );
             listItem.children = li.children( 'ul,ol' ).sortableListsToHierarchy();
-            order ++;
+            position++;
         } );
 
         return arr;
